@@ -7,6 +7,15 @@ xcode-select --install
 # Install Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Add Brew to PATH
+export PATH="/opt/homebrew/bin:$PATH" >> ~/.zshrc
+
+# Add Code to PATH
+cat << EOF >> ~/.zprofile
+# Add Visual Studio Code (code)
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+EOF
+
 # Grab Brewfile
 curl -fsSL https://raw.githubusercontent.com/LiFEDEVELOPMENT/MacOS-Installscript/main/Brewfile > ~/Brewfile
 
@@ -19,7 +28,6 @@ ssh-keygen -t ed25519 -C $githubmail
 
 # Add SSH-Key to the ssh-agent
 eval "$(ssh-agent -s)"
-touch ~/.ssh/config
 echo "Host *.github.com
   AddKeysToAgent yes
   UseKeychain yes
