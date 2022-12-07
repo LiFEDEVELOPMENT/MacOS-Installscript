@@ -1,3 +1,3 @@
 ```bash
-sh https://raw.githubusercontent.com/LiFEDEVELOPMENT/MacOS-Installscript/main/installscript.sh
+curl -fsSL https://raw.githubusercontent.com/LiFEDEVELOPMENT/MacOS-Installscript/main/installscript.sh | sh
 ```
