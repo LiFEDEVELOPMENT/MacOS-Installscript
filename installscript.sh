@@ -1,26 +1,25 @@
+# Grab Brewfile
+curl -fsSL https://raw.githubusercontent.com/LiFEDEVELOPMENT/MacOS-Installscript/main/Brewfile > ~/Brewfile
+
 # Install Rosetta 2
 softwareupdate --install-rosetta
-
-# Install Xcode Developer Tools
-xcode-select --install
 
 # Install Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Add Brew to PATH
-export PATH="/opt/homebrew/bin:$PATH" >> ~/.zshrc
+echo '# Set PATH, MANPATH, etc., for Homebrew.' >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+∏
+# Install Content of Brewfile
+brew bundle
 
 # Add Code to PATH
 cat << EOF >> ~/.zprofile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
-
-# Grab Brewfile
-curl -fsSL https://raw.githubusercontent.com/LiFEDEVELOPMENT/MacOS-Installscript/main/Brewfile > ~/Brewfile
-
-# Install Content of Brewfile
-brew bundle
 
 # Generate a SSH-Key for GitHub
 githubmail=$(bash -c 'read -e -p "Was ist deine GitHub Mailadresse?: " tmp; echo $tmp')
